@@ -1,7 +1,7 @@
 import React from 'react'; 
 import ReactDOM from 'react-dom'; 
 import { Provider } from 'react-redux';
-import { configureStore } from './todos/store.js';
+import { configureStore } from './store.js';
 import App from './App.js'; 
 
 ReactDOM.render(
