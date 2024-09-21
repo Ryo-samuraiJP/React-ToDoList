@@ -1,4 +1,4 @@
-import { CREATE_TODO, REMOVE_TODO } from './actions'; 
+import { CREATE_TODO, REMOVE_TODO } from './actions';
 
 
 export const todos = (state = [], action) => {

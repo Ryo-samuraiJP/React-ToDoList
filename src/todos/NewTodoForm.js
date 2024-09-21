@@ -1,6 +1,6 @@
 import React, { startTransition, useState } from "react";
 import { connect } from "react-redux";
-import { createToDo } from "./actions";
+import { createTodo } from "./actions";
 import './NewTodoForm.css';
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 }); 
 
 const mapDispatchToProps = dispatch => ({
-  onCreatePressed: text => dispatch(createToDo(text)),
+  onCreatePressed: text => dispatch(createTodo(text)),
 }); 
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);
