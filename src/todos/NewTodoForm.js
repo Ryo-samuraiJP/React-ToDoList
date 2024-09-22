@@ -1,4 +1,4 @@
-import React, { startTransition, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { createTodo } from "./actions";
 import './NewTodoForm.css';
@@ -24,8 +24,8 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
             setInputValue('');
           }
         }}
-        className="new-todo-button"
-      >Create Todo</button>
+        className="new-todo-button">Create Todo
+      </button>
     </div>
   );
 };
