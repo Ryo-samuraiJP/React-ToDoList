@@ -6,13 +6,7 @@ import { markTodoAsCompleted } from "./actions";
 import { loadTodos, removeTodoRequest } from "./thunks";
 import './TodoList.css';
 
-const TodoList = ({ 
-  todos = [], 
-  onRemovePressed, 
-  onCompletedPressed, 
-  isLoading,
-  startLoadingTodos
-}) => {
+const TodoList = ({ todos = [], onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos }) => {
   useEffect(() => {
     startLoadingTodos();
   }, []);  
@@ -21,13 +15,11 @@ const TodoList = ({
   const content = (
     <div className="list-wrapper">
       <NewTodoForm />
-      {todos.map(todo => 
-        <TodoListItem 
+      {todos.map(todo => <TodoListItem 
           todo={todo}
           onRemovePressed={onRemovePressed}
-          onCompletedPressed={onCompletedPressed}
-        />)
-      }
+          onCompletedPressed={onCompletedPressed} />
+      )}
     </div>
   );
   return isLoading ? loadingMessage : content;
