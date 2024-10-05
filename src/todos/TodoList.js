@@ -1,38 +1,39 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
+import NewTodoForm from "./NewTodoForm";
 import TodoListItem from "./TodoListItem";
 import { getTodosLoading, getIncompleteTodos, getCompletedTodos } from "./selectors";
 import { loadTodos, removeTodoRequest, markTodoAsCompletedRequest } from "./thunks";
 
-const TodoList = ({ completedTodos, getIncompleteTodos, onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos }) => {
+const ListWrapper = styled.div`
+  max-width: 700px;
+  margin: auto;
+`;
+
+const TodoList = ({ completedTodos, incompleteTodos, onRemovePressed, onCompletedPressed, isLoading, startLoadingTodos }) => {
   useEffect(() => {
     startLoadingTodos();
-  }, [startLoadingTodos]);  
+  }, []);  
   
   const loadingMessage = <div>Loading todos...</div>;
   const content = (
-    <div>
+    <ListWrapper>
+      <NewTodoForm />
       <h3>Incomplete:</h3>
-      {getIncompleteTodos && getIncompleteTodos.map(todo => (
-        <TodoListItem 
-          key={todo.id}
+      {incompleteTodos.map(todo => <TodoListItem 
           todo={todo}
           onRemovePressed={onRemovePressed}
-          onCompletedPressed={onCompletedPressed} 
-        />
-      ))}
+          onCompletedPressed={onCompletedPressed} />
+      )}
       <h3>Completed</h3>
-      {completedTodos && completedTodos.map(todo => (
-        <TodoListItem
-          key={todo.id}
+      {completedTodos.map(todo => <TodoListItem 
           todo={todo}
           onRemovePressed={onRemovePressed}
-          onCompletedPressed={onCompletedPressed}
-        />
-      ))}
-    </div>
+          onCompletedPressed={onCompletedPressed} />
+      )}
+    </ListWrapper>
   );
-
   return isLoading ? loadingMessage : content;
 };
 
