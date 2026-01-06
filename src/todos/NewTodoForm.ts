@@ -34,38 +34,41 @@ const NewTodoButton = styled.button`
 `;
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   return (
     <FormContainer>
       <NewTodoInput
-        className="new-todo-input" 
+        className="new-todo-input"
         type="text"
         placeholder="Type your new todo here"
         value={inputValue}
-        onChange={e => setInputValue(e.target.value)}
+        onChange={(e) => setInputValue(e.target.value)}
       />
       <NewTodoButton
         onClick={() => {
-          const isDuplicateText = 
-            todos.some(todo => todo.text === inputValue);
+          const isDuplicateText = todos.some(
+            (todo) => todo.text === inputValue
+          );
           if (!isDuplicateText) {
-            onCreatePressed(inputValue); 
-            setInputValue('');
+            onCreatePressed(inputValue);
+            setInputValue("");
           }
         }}
-        className="new-todo-button">Create Todo
+        className="new-todo-button"
+      >
+        Create Todo
       </NewTodoButton>
     </FormContainer>
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   todos: getTodos(state),
-}); 
+});
 
-const mapDispatchToProps = dispatch => ({
-  onCreatePressed: text => dispatch(addTodoRequest(text)),
-}); 
+const mapDispatchToProps = (dispatch) => ({
+  onCreatePressed: (text) => dispatch(addTodoRequest(text)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);

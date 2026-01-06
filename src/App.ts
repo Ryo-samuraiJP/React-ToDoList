@@ -1,7 +1,7 @@
-import React from 'react'; 
-import { hot } from 'react-hot-loader';
-import TodoList from './todos/TodoList';
-import styled from 'styled-components';
+import React from "react";
+import { hot } from "react-hot-loader";
+import TodoList from "./todos/TodoList";
+import styled from "styled-components";
 
 const AppContainer = styled.div`
   margin: 1rem;
@@ -17,4 +17,4 @@ const App = () => (
   </AppContainer>
 );
 
-export default hot(module)(App); 
+export default hot(module)(App);
